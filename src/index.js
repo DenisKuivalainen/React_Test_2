@@ -18,6 +18,7 @@ function Square(props) {
         xIsNext: true,
       };
     }
+
   
     handleClick(i) {
       const squares = this.state.squares.slice();
@@ -27,6 +28,13 @@ function Square(props) {
         squares: squares,
         xIsNext: !this.state.xIsNext,
       });
+      let resch = 0;
+      for (let i = 0; i < squares.length; i++) {
+        if (squares[i]!==null) {resch++;}
+        if (resch === 9) {window.location.reload();}
+        if (i===squares.length-1) {resch = 0;}
+      }
+      
     }
   
     renderSquare(i) {
@@ -77,8 +85,8 @@ function Square(props) {
             <Board />
           </div>
           <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
+            <div></div>
+            <ol></ol>
           </div>
         </div>
       );
@@ -109,4 +117,6 @@ function calculateWinner(squares) {
     <Game />,
     document.getElementById('root')
   );
+
+
   
