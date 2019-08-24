@@ -31,7 +31,7 @@ function Square(props) {
       let resch = 0;
       for (let i = 0; i < squares.length; i++) {
         if (squares[i]!==null) {resch++;}
-        if (resch === 9) {window.location.reload();}
+        if (resch === 9) {window.location.reload()}
         if (i===squares.length-1) {resch = 0;}
       }
       
@@ -51,6 +51,7 @@ function Square(props) {
         let status;
         if (winner) {
             status = winner + ' wins!';
+            window.location.reload();
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
