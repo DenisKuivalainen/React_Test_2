@@ -3,20 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
+    constructor(props)  {
+        super(props);
+        this.state = {
+            value: null
+        };
+    }
     render() {
       return (
         <button className="square"
             onClick={
-                function() {alert('click'); }
+                () => this.setState({value: 'X'})
             }
         >
-          {this.props.value}
+          {this.state.value}
         </button>
       );
     }
   }
   
   class Board extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares: Array(9).fill(null)
+        };
+    }
+
     renderSquare(i) {
       return <Square value={i} />;
     }
@@ -28,19 +41,19 @@ class Square extends React.Component {
         <div>
           <div className="status">{status}</div>
           <div className="board-row">
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-            {this.renderSquare(3)}
+            {this.renderSquare()}
+            {this.renderSquare()}
+            {this.renderSquare()}
           </div>
           <div className="board-row">
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-            {this.renderSquare(6)}
+            {this.renderSquare( )}
+            {this.renderSquare()}
+            {this.renderSquare()}
           </div>
           <div className="board-row">
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-            {this.renderSquare(9)}
+            {this.renderSquare()}
+            {this.renderSquare()}
+            {this.renderSquare()}
           </div>
         </div>
       );
